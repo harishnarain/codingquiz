@@ -1,0 +1,43 @@
+* {
+    font-family: 'Roboto' sans-serif;
+}
+
+main {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.intro {
+    font-size: larger;
+}
+
+@keyframes slideUp {
+    from{opacity: 0; top: 100%;}
+    to{opacity: 1; top: 0%;}
+}
+
+.jumbotron {
+    animation: slideUp 1.5s forwards;
+}
+
+.timer {
+    font-size: xx-large;
+}
+
+.answer {
+    font-size: x-large;
+    background-color: lightgray;
+    margin-bottom: 10px;
+}
+
+.answer-list {
+    text-align: left;
+}
+
+.response {
+    font-size: xxx-large;
+}
+
+.question-row {
+    margin-bottom: 10px;
+}
