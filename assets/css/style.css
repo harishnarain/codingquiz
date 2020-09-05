@@ -20,6 +20,12 @@ main {
     animation: slideUp 1.5s forwards;
 }
 
+.timer-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .timer {
     font-size: xx-large;
 }
@@ -34,10 +40,31 @@ main {
     text-align: left;
 }
 
+.answer-list p {
+    margin-bottom: 0;
+    padding: 10px 20px;
+}
+
+.answer-list .answer-col {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .response {
     font-size: xxx-large;
 }
 
 .question-row {
     margin-bottom: 10px;
+}
+
+.timer-title-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-title {
+    font-size: x-large;
+    margin-bottom: 0;
 }
