@@ -88,3 +88,7 @@ main {
 .modal-footer {
   display: none;
 }
+
+.stat-status {
+  font-size: x-large;
+}
