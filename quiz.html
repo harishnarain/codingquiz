@@ -71,6 +71,85 @@
           </div>
         </div>
       </div>
+
+      <!-- Summary Modal -->
+      <div class="modal fade" id="summaryModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="summaryModalTitle"></h5>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <p id="stat-status"><strong></strong></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 stat-header">
+                    <p><strong>Time remaining:</strong></p>
+                  </div>
+                  <div class="col-md-6 stat-content">
+                    <p id="stat-time"></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 stat-header">
+                    <p><strong>Percentage correct:</strong></p>
+                  </div>
+                  <div class="col-md-6 stat-content">
+                    <p id="stat-percent"></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 stat-header">
+                    <p><strong>Questions answered:</strong></p>
+                  </div>
+                  <div class="col-md-6 stat-content">
+                    <p id="stat-qa"></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 stat-header">
+                    <p><strong>Correct answers:</strong></p>
+                  </div>
+                  <div class="col-md-6 stat-content">
+                    <p id="stat-ca"></p>
+                  </div>
+                </div><div class="row">
+                  <div class="col-md-6 stat-header">
+                    <p><strong>Incorrect answers:</strong></p>
+                  </div>
+                  <div class="col-md-6 stat-content">
+                    <p id="stat-wa"></p>
+                  </div>
+                </div>
+                <form id="submitLeaderboard">
+                  <div class="form-group">
+                    <label for="playerName">Enter name</label>
+                    <input type="text" id="playerName" class="form-control">
+                  </div>
+                  <button type="submit" class="btn btn-outline-primary btn-sm">Submit</button>
+                </form>
+                
+              </div>
+            </div>
+            <div class="modal-footer" id="modal-footer">
+              <a
+                type="button"
+                class="btn btn-secondary"
+                href="quiz.html"
+              >
+                Restart
+              </a>
+              <a href="leaderboard.html" type="button" class="btn btn-primary">
+                High Scores
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   </body>
   <script src="assets/js/quiz.js"></script>

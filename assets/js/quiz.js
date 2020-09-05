@@ -17,7 +17,7 @@ const quizStats = {
   numOfQuestions: 0,
   numWrong: 0,
   numCorrect: 0,
-  calculatePercentageCorrect: function calculatePercentage() {
+  calculatePercentageCorrect: function calculatePercentageCorrect() {
     percent = (this.numCorrect / this.numOfQuestions) * 100;
     return percent;
   },
@@ -25,9 +25,8 @@ const quizStats = {
 
 // Globals
 let interval;
-let timer = 60;
+let timer = 12;
 let currentQuestionIndex = 0;
-let questionsAsked = [];
 let selectedAnswer = "";
 
 // Elements
@@ -36,8 +35,20 @@ const answerListEl = document.getElementById("answer-list");
 const questionEl = document.getElementById("question");
 const responseEl = document.getElementById("response");
 const advanceColEl = document.querySelector(".advance-col");
+const summaryTitleEl = document.getElementById("summaryModalTitle");
+const statTime = document.getElementById("stat-time");
+const statPercentEl = document.getElementById("stat-percent");
+const statQa = document.getElementById("stat-qa");
+const statCa = document.getElementById("stat-ca");
+const statWa = document.getElementById("stat-wa");
+const statStatus = document.getElementById("stat-status");
+const formLeaderboard = document.getElementById("submitLeaderboard");
 
 // Functions
+const updateSummaryModalTitle = (status) => {
+  summaryTitleEl.textContent = status;
+};
+
 const startTimer = () => {
   interval = setInterval(() => {
     // Countdown logic
@@ -46,6 +57,7 @@ const startTimer = () => {
       timer--;
     } else {
       timerEl.textContent = timer;
+      endQuiz();
       clearInterval(interval);
     }
     // Logic to change color of timer at 10 sec mark
@@ -63,7 +75,6 @@ const generateQuestion = (index) => {
   startTimer();
   quizStats.numOfQuestions++;
   currentQuestionIndex = index;
-  questionsAsked.push(index);
   const question = questions[currentQuestionIndex];
 
   // Output question text
@@ -89,24 +100,44 @@ const generateQuestion = (index) => {
   answerListEl.addEventListener("click", checkAnswer);
 };
 
+const showSummary = () => {
+  document.getElementById("playerName").value = "";
+  $("#summaryModal").modal({ backdrop: "static" });
+  $("#summaryModal").modal("show");
+};
+
+const endQuiz = () => {
+  timer === 0
+    ? updateSummaryModalTitle("Time's up!")
+    : updateSummaryModalTitle("You're finished!");
+  if (quizStats.calculatePercentageCorrect() <= 50 || timer === 0) {
+    timer = 0;
+    statTime.textContent = "0";
+    statStatus.textContent = "Better luck next time :(";
+  } else {
+    statTime.textContent = timer;
+    statStatus.textContent = "Great job!";
+  }
+  statPercentEl.textContent = `${quizStats.calculatePercentageCorrect()}%`;
+  statQa.textContent = quizStats.numOfQuestions;
+  statCa.textContent = quizStats.numCorrect;
+  statWa.textContent = quizStats.numWrong;
+  showSummary();
+};
+
 const advanceQuestion = () => {
   // Clean up
   answerListEl.innerHTML = "";
   advanceColEl.innerHTML = "";
   responseEl.textContent = "";
+  questionEl.textContent = "";
 
   // Generate question
   currentQuestionIndex += 1;
   if (currentQuestionIndex < questions.length) {
     generateQuestion(currentQuestionIndex);
   } else {
-    console.log("We're done!");
-    console.log(`[Number of questions:] ${quizStats.numOfQuestions}`);
-    console.log(`[Number correct:] ${quizStats.numCorrect}`);
-    console.log(`[Number wrong:] ${quizStats.numWrong}`);
-    console.log(
-      `[Correct percentage:] ${quizStats.calculatePercentageCorrect()}%`
-    );
+    endQuiz();
   }
 };
 
@@ -187,6 +218,19 @@ const shuffleQuestionsAndAnswers = () => {
     shuffleArray(question.choices);
   });
 };
+
+// Give options for viewing leaderboard or restarting after submitting high score
+const postSubmitHandler = () => {
+  formLeaderboard.style.display = "none";
+  document.getElementById("modal-footer").style.display = "inherit";
+};
+
+// Routine for submitting to leaderboard
+formLeaderboard.addEventListener("submit", (event) => {
+  event.preventDefault();
+  console.log(document.getElementById("playerName").value);
+  postSubmitHandler();
+});
 
 // Main program
 shuffleQuestionsAndAnswers();

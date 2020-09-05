@@ -76,3 +76,15 @@ main {
   font-size: x-large;
   margin-bottom: 0;
 }
+
+.stat-header {
+  text-align: left;
+}
+
+.stat-content {
+  text-align: right;
+}
+
+.modal-footer {
+  display: none;
+}
