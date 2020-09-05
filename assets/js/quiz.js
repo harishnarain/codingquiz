@@ -225,10 +225,31 @@ const postSubmitHandler = () => {
   document.getElementById("modal-footer").style.display = "inherit";
 };
 
+// Add score to leaderboard
+const addToLeaderboard = (name, time) => {
+  const score = {
+    name: name,
+    time: time,
+  };
+  // check if scores already exist in leaderboard
+  if (localStorage.getItem("scores")) {
+    // case if scores exist
+    // get items from existing localstorage and put into an array
+    const scores = JSON.parse(localStorage.getItem("scores"));
+    scores.push(score);
+    localStorage.setItem("scores", JSON.stringify(scores));
+  } else {
+    // case if no scores exist
+    // put score into array and store in localstorage
+    const scores = [score];
+    localStorage.setItem("scores", JSON.stringify(scores));
+  }
+};
+
 // Routine for submitting to leaderboard
 formLeaderboard.addEventListener("submit", (event) => {
   event.preventDefault();
-  console.log(document.getElementById("playerName").value);
+  addToLeaderboard(document.getElementById("playerName").value, timer);
   postSubmitHandler();
 });
 
