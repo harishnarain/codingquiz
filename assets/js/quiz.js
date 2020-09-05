@@ -6,13 +6,29 @@ const questions = [
     choices: ["JavaScript", "C#", "Algol", "Fortran"],
     answer: "JavaScript",
   },
+  {
+    question: "Which of the following is tags would be used for the header?",
+    choices: ["<head>", "<div>", "<header>", "<main>"],
+    answer: "<header>",
+  },
 ];
+
+const quizStats = {
+  numOfQuestions: 0,
+  numWrong: 0,
+  numCorrect: 0,
+  calculatePercentageCorrect: function calculatePercentage() {
+    percent = (this.numCorrect / this.numOfQuestions) * 100;
+    return percent;
+  },
+};
 
 // Globals
 let interval;
-let timer = 10;
-let currentQuestionIndex;
+let timer = 60;
+let currentQuestionIndex = 0;
 let questionsAsked = [];
+let selectedAnswer = "";
 
 // Elements
 const timerEl = document.getElementById("timer");
@@ -45,6 +61,7 @@ const startTimer = () => {
 
 const generateQuestion = (index) => {
   startTimer();
+  quizStats.numOfQuestions++;
   currentQuestionIndex = index;
   questionsAsked.push(index);
   const question = questions[currentQuestionIndex];
@@ -73,22 +90,33 @@ const generateQuestion = (index) => {
 };
 
 const advanceQuestion = () => {
-    // Clean up
-    answerListEl.innerHTML = "";
-    advanceColEl.innerHTML = "";
-    responseEl.textContent = "";
+  // Clean up
+  answerListEl.innerHTML = "";
+  advanceColEl.innerHTML = "";
+  responseEl.textContent = "";
 
-    // Generate question
-    generateQuestion(0);
+  // Generate question
+  currentQuestionIndex += 1;
+  if (currentQuestionIndex < questions.length) {
+    generateQuestion(currentQuestionIndex);
+  } else {
+    console.log("We're done!");
+    console.log(`[Number of questions:] ${quizStats.numOfQuestions}`);
+    console.log(`[Number correct:] ${quizStats.numCorrect}`);
+    console.log(`[Number wrong:] ${quizStats.numWrong}`);
+    console.log(
+      `[Correct percentage:] ${quizStats.calculatePercentageCorrect()}%`
+    );
+  }
 };
 
 const renderAdvanceButton = () => {
-    const advanceEl = document.createElement("button");
-    advanceEl.setAttribute("class", "btn btn-lg btn-primary");
-    advanceEl.setAttribute("id", "advance");
-    advanceEl.textContent = "Next question";
-    advanceColEl.appendChild(advanceEl);
-    advanceEl.addEventListener("click", advanceQuestion);
+  const advanceEl = document.createElement("button");
+  advanceEl.setAttribute("class", "btn btn-lg btn-primary");
+  advanceEl.setAttribute("id", "advance");
+  advanceEl.textContent = "Next question";
+  advanceColEl.appendChild(advanceEl);
+  advanceEl.addEventListener("click", advanceQuestion);
 };
 
 const provideResponse = (isCorrect) => {
@@ -96,13 +124,33 @@ const provideResponse = (isCorrect) => {
   clearInterval(interval);
 
   // highlight correct answer
+  const correctEl = document.querySelector(
+    "[value='" + questions[currentQuestionIndex].answer.toLowerCase() + "']"
+  );
+  correctEl.style.backgroundColor = "darkseagreen";
+  correctEl.style.textDecoration = "underline";
+
   // highlight wrong answer if !isCorrect
+  if (!isCorrect) {
+    const selectedEl = document.querySelector(
+      "[value='" + selectedAnswer.toLowerCase() + "']"
+    );
+    selectedEl.style.backgroundColor = "darksalmon";
+    selectedEl.style.textDecoration = "line-through";
+  }
+
   // correct case
   if (isCorrect) {
+    timer += 5;
+    quizStats.numCorrect++;
+    timerEl.textContent = timer;
     responseEl.style.color = "darkseagreen";
     responseEl.textContent = "Correct!";
   } else {
     // wrong case
+    timer -= 5;
+    quizStats.numWrong++;
+    timerEl.textContent = timer;
     responseEl.style.color = "darksalmon";
     responseEl.textContent = "Incorrect!";
   }
@@ -112,6 +160,7 @@ const provideResponse = (isCorrect) => {
 
 const checkAnswer = (event) => {
   if (event.target.nodeName === "P") {
+    selectedAnswer = event.target.getAttribute("value").toLowerCase();
     answerListEl.removeEventListener("click", checkAnswer);
     event.target.getAttribute("value").toLowerCase() ===
     questions[currentQuestionIndex].answer.toLowerCase()
@@ -120,14 +169,25 @@ const checkAnswer = (event) => {
   }
 };
 
-const getRandomInt = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.ceil(max);
-  return Math.floor(Math.random() * (max - min + 1) + min);
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
 };
 
-// Global Event listeners
-
+const shuffleQuestionsAndAnswers = () => {
+  // Shuffle questions array
+  shuffleArray(questions);
+  // Shuffle choices in each question
+  questions.forEach((question) => {
+    shuffleArray(question.choices);
+  });
+};
 
 // Main program
-generateQuestion(0);
+shuffleQuestionsAndAnswers();
+generateQuestion(currentQuestionIndex);

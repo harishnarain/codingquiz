@@ -1,70 +1,78 @@
 * {
-    font-family: 'Roboto' sans-serif;
+  font-family: "Roboto" sans-serif;
 }
 
 main {
-    padding-top: 50px;
-    text-align: center;
+  padding-top: 50px;
+  text-align: center;
 }
 
 .intro {
-    font-size: larger;
+  font-size: larger;
 }
 
 @keyframes slideUp {
-    from{opacity: 0; top: 100%;}
-    to{opacity: 1; top: 0%;}
+  from {
+    opacity: 0;
+    top: 100%;
+  }
+  to {
+    opacity: 1;
+    top: 0%;
+  }
 }
 
-.jumbotron {
-    animation: slideUp 1.5s forwards;
+.jumbotron,
+.question-row,
+.answer-list {
+  animation: slideUp 1.5s forwards;
 }
 
 .timer-col {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .timer {
-    font-size: xx-large;
+  font-size: xx-large;
 }
 
 .answer {
-    font-size: x-large;
-    background-color: lightgray;
-    margin-bottom: 10px;
+  font-size: x-large;
+  background-color: lightgray;
+  margin-bottom: 10px;
 }
 
 .answer-list {
-    text-align: left;
+  text-align: left;
 }
 
 .answer-list p {
-    margin-bottom: 0;
-    padding: 10px 20px;
+  margin-bottom: 0;
+  padding: 10px 20px;
 }
 
 .answer-list .answer-col {
-    padding-left: 0;
-    padding-right: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .response {
-    font-size: xxx-large;
+  font-size: xxx-large;
 }
 
 .question-row {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .timer-title-col {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .timer-title {
-    font-size: x-large;
-    margin-bottom: 0;
+  font-size: x-large;
+  margin-bottom: 0;
 }

@@ -37,39 +37,40 @@
       <nav class="navbar nabar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.html">Coding Quiz</a>
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">High Scores</li>
+          <li class="nav-item">
+            <a class="nav-link" href="leaderboard.html">High Scores</a>
+          </li>
           <li class="nav-item"></li>
         </ul>
       </nav>
     </header>
     <main>
-        <div class="container">
-            <div class="row question-row">
-                <div class="col-md-8">
-                    <h4 class="question" id="question"></h4>
-                </div>
-                <div class="col-md-2 timer-title-col">
-                    <p class="timer-title">Time remaining:</p>
-                </div>
-                <div class="col-md-2 timer-col">
-                    <p class="timer" id="timer"></p>
-                </div>
+      <div class="container">
+        <div class="row question-row">
+          <div class="col-md-8">
+            <h4 class="question" id="question"></h4>
+          </div>
+          <div class="col-md-2 timer-title-col">
+            <p class="timer-title">Time remaining:</p>
+          </div>
+          <div class="col-md-2 timer-col">
+            <p class="timer" id="timer"></p>
+          </div>
+        </div>
+        <div class="row">
+          <ul class="col-md-8 answer-list" id="answer-list"></ul>
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-12">
+                <p class="response" id="response"></p>
+              </div>
             </div>
             <div class="row">
-                <ul class="col-md-8 answer-list" id="answer-list">
-                </ul>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="response" id="response"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 advance-col"></div>
-                    </div>
-                </div>
+              <div class="col-md-12 advance-col"></div>
             </div>
+          </div>
         </div>
+      </div>
     </main>
   </body>
   <script src="assets/js/quiz.js"></script>
