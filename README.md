@@ -22,6 +22,7 @@ SO THAT I can gauge my progress compared to my peers
 * THEN I can save my initials and score
 
 ## Additional features
+* Timer changes color. At 10 second interval it turns green, and at 5 seconds it turns red.
 * Pauses timer when user selects choice before advancing to next question
 * When the timer is paused, if the user has a wrong choice it is highlighted in red and the correct answer is highlighted in green. If the choice is correct it is just highlighted in green.
 * Admin page is provided so users can customize the application
@@ -45,7 +46,7 @@ SO THAT I can gauge my progress compared to my peers
 ## Accessing the site
 Please visit the [site](https://www.harishnarain.com/codingquiz/) hosted on GitHub Pages.
 
-## Screenshot
+## Screenshots
 ![Screenshot 1](https://github.com/harishnarain/codingquiz/blob/master/Screenshot1.png)
 ![Screenshot 2](https://github.com/harishnarain/codingquiz/blob/master/Screenshot2.png)
 ![Screenshot 3](https://github.com/harishnarain/codingquiz/blob/master/Screenshot3.png)
