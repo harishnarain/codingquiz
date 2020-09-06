@@ -7,9 +7,14 @@ const questions = [
     answer: "JavaScript",
   },
   {
-    question: "Which of the following is tags would be used for the header?",
+    question: "Which of the following tags would be used for the header?",
     choices: ["<head>", "<div>", "<header>", "<main>"],
     answer: "<header>",
+  },
+  {
+    question: "What is the condition for '1' === 1?",
+    choices: ["true", "false"],
+    answer: "false",
   },
 ];
 
@@ -18,7 +23,7 @@ const quizStats = {
   numWrong: 0,
   numCorrect: 0,
   calculatePercentageCorrect: function calculatePercentageCorrect() {
-    percent = (this.numCorrect / this.numOfQuestions) * 100;
+    percent = ((this.numCorrect / this.numOfQuestions) * 100).toFixed(2);
     return percent;
   },
 };
@@ -27,7 +32,6 @@ const quizStats = {
 let interval;
 let timer = 12;
 let currentQuestionIndex = 0;
-let selectedAnswer = "";
 
 // Elements
 const timerEl = document.getElementById("timer");
@@ -150,7 +154,7 @@ const renderAdvanceButton = () => {
   advanceEl.addEventListener("click", advanceQuestion);
 };
 
-const provideResponse = (isCorrect) => {
+const provideResponse = (isCorrect, selectedAnswer) => {
   // pause timer
   clearInterval(interval);
 
@@ -191,12 +195,11 @@ const provideResponse = (isCorrect) => {
 
 const checkAnswer = (event) => {
   if (event.target.nodeName === "P") {
-    selectedAnswer = event.target.getAttribute("value").toLowerCase();
     answerListEl.removeEventListener("click", checkAnswer);
     event.target.getAttribute("value").toLowerCase() ===
     questions[currentQuestionIndex].answer.toLowerCase()
-      ? provideResponse(true)
-      : provideResponse(false);
+      ? provideResponse(true, event.target.getAttribute("value").toLowerCase())
+      : provideResponse(false, event.target.getAttribute("value").toLowerCase());
   }
 };
 

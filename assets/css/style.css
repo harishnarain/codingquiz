@@ -24,7 +24,8 @@ main {
 
 .jumbotron,
 .question-row,
-.answer-list {
+.answer-list,
+.lb-container {
   animation: slideUp 1.5s forwards;
 }
 
@@ -91,4 +92,12 @@ main {
 
 .stat-status {
   font-size: x-large;
+}
+
+.lb-title {
+  padding-bottom: 10px;
+}
+
+.btn-row {
+  padding: 10px;
 }
