@@ -54,10 +54,21 @@
         <div class="container config-container">
           <div class="row">
             <div class="col-md-12">
-              <h3>Global configuration:</h3>
+              <h3>Local configuration:</h3>
             </div>
           </div>
-          <div class="container globalConfiguration" id="globalConfiguration">
+          <div class="row">
+            <div class="col-md-12">
+              <button
+                type="button"
+                class="btn btn-sm btn-danger"
+                id="clearLocalStorage"
+              >
+                Clear localStorage
+              </button>
+            </div>
+          </div>
+          <div class="container localConfiguration" id="localConfiguration">
             <div class="col-md-12 gc-col" id="gc-col">
               <table class="table table-striped">
                 <thead>
@@ -116,13 +127,6 @@
                 data-target="#customQuestionModal"
               >
                 Add Question
-              </button>
-              <button
-                type="button"
-                class="btn btn-sm btn-danger"
-                id="clearLocalStorage"
-              >
-                Clear localStorage
               </button>
             </div>
           </div>
