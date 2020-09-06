@@ -16,6 +16,32 @@ const questions = [
     choices: ["true", "false"],
     answer: "false",
   },
+  {
+    question: "What is the index of the first element in an array?",
+    choices: ["1", "0", "array.length", "undefined"],
+    answer: "0",
+  },
+  {
+    question: "Cascading Style Sheets (CSS) is responsible for?",
+    choices: [
+      "Writing responsive web pages",
+      "Describing the presentation of HTML",
+      "Descending order of mockup designs provided by a graphic designer",
+      "3rd party API",
+    ],
+    answer: "describing the presentation of HTML",
+  },
+  {
+    question:
+      "Which one of the following tools can be used to inspect website or HTML document from within your browser?",
+    choices: [
+      "Chrome Dev Tools",
+      "Extensions Manager",
+      "AdBlocker",
+      "Browser Settings",
+    ],
+    answer: "Chrome Dev Tools",
+  },
 ];
 
 const quizStats = {
@@ -111,7 +137,7 @@ const showSummary = () => {
 };
 
 const endQuiz = () => {
-  timer === 0
+  timer <= 0
     ? updateSummaryModalTitle("Time's up!")
     : updateSummaryModalTitle("You're finished!");
   if (quizStats.calculatePercentageCorrect() <= 50 || timer === 0) {
@@ -199,7 +225,10 @@ const checkAnswer = (event) => {
     event.target.getAttribute("value").toLowerCase() ===
     questions[currentQuestionIndex].answer.toLowerCase()
       ? provideResponse(true, event.target.getAttribute("value").toLowerCase())
-      : provideResponse(false, event.target.getAttribute("value").toLowerCase());
+      : provideResponse(
+          false,
+          event.target.getAttribute("value").toLowerCase()
+        );
   }
 };
 
@@ -256,6 +285,22 @@ formLeaderboard.addEventListener("submit", (event) => {
   postSubmitHandler();
 });
 
+// Initialize custom settings if they exist
+const initCustomSettings = () => {
+  // initialize timer
+  if (localStorage.getItem("customTimer")) {
+    timer = localStorage.getItem("customTimer");
+  }
+
+  // initialize extra questions
+  if (localStorage.getItem("customQuestions")) {
+    JSON.parse(localStorage.customQuestions).forEach((question) => {
+      questions.push(question);
+    });
+  }
+};
+
 // Main program
+initCustomSettings();
 shuffleQuestionsAndAnswers();
 generateQuestion(currentQuestionIndex);

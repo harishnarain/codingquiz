@@ -25,7 +25,8 @@ main {
 .jumbotron,
 .question-row,
 .answer-list,
-.lb-container {
+.lb-container,
+.admin-container {
   animation: slideUp 1.5s forwards;
 }
 
@@ -100,4 +101,17 @@ main {
 
 .btn-row {
   padding: 10px;
+}
+
+.config-container {
+  text-align: initial;
+  padding: 15px;
+}
+
+.cq-row {
+  padding: 10px;
+}
+
+.customQuestions {
+  padding: 15px;
 }

@@ -4,7 +4,21 @@ const leaderboardListingEl = document.getElementById("leaderboard-listing");
 // Read data from localStorage to arrray
 const scores = JSON.parse(localStorage.getItem("scores"));
 
-// Sort the array by time
+// Sort the array by time use bubble sort
+const sortScoresArray = (array, attribute) => {
+  let swapped;
+  do {
+    swapped = false;
+    for (i = 0; i < array.length - 1; i++) {
+      if (array[i][attribute] < array[i + 1][attribute]) {
+        let temp = array[i];
+        array[i] = array[i + 1];
+        array[i + 1] = temp;
+        swapped = true;
+      }
+    }
+  } while (swapped);
+};
 
 // Output scores array to leaderboard
 const createLeaderRow = (rank, name, time) => {
@@ -23,6 +37,7 @@ const createLeaderRow = (rank, name, time) => {
 };
 
 const displayScores = () => {
+  sortScoresArray(scores, "time");
   scores.forEach((score, i) => {
     createLeaderRow(i + 1, score.name, score.time);
   });
@@ -40,6 +55,6 @@ scores ? displayScores() : displayEmpty();
 
 // Clear scores routine
 document.getElementById("clear").addEventListener("click", () => {
-  localStorage.clear();
+  localStorage.removeItem("scores");
   location.reload();
 });

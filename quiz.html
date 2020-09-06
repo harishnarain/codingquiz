@@ -77,13 +77,15 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="summaryModalTitle"></h5>
+              <h4 class="modal-title" id="summaryModalTitle"></h4>
             </div>
             <div class="modal-body">
               <div class="container">
                 <div class="row">
                   <div class="col-md-12">
-                    <p class="stat-status" id="stat-status"><strong></strong></p>
+                    <p class="stat-status" id="stat-status">
+                      <strong></strong>
+                    </p>
                   </div>
                 </div>
                 <div class="row">
@@ -117,7 +119,8 @@
                   <div class="col-md-6 stat-content">
                     <p id="stat-ca"></p>
                   </div>
-                </div><div class="row">
+                </div>
+                <div class="row">
                   <div class="col-md-6 stat-header">
                     <p><strong>Incorrect answers:</strong></p>
                   </div>
@@ -128,19 +131,16 @@
                 <form id="submitLeaderboard">
                   <div class="form-group">
                     <label for="playerName">Enter name</label>
-                    <input type="text" id="playerName" class="form-control">
+                    <input type="text" id="playerName" class="form-control" />
                   </div>
-                  <button type="submit" class="btn btn-outline-primary btn-sm">Submit</button>
+                  <button type="submit" class="btn btn-outline-primary btn-sm">
+                    Submit
+                  </button>
                 </form>
-                
               </div>
             </div>
             <div class="modal-footer" id="modal-footer">
-              <a
-                type="button"
-                class="btn btn-secondary"
-                href="quiz.html"
-              >
+              <a type="button" class="btn btn-secondary" href="quiz.html">
                 Restart
               </a>
               <a href="leaderboard.html" type="button" class="btn btn-primary">
