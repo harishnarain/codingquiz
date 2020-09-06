@@ -53,26 +53,50 @@
         </div>
         <div class="container config-container">
           <div class="row">
-            <div class="col-md-6">Enter custom timer amount:</div>
-            <div class="col-md-3">
-              <input type="text" id="customTimer" class="form-control" />
+            <div class="col-md-12">
+              <h3>Global configuration:</h3>
             </div>
-            <div class="col-md-3">
-              <button
-                type="button"
-                class="btn btn-sm btn-success"
-                id="timerSave"
-                disabled
-              >
-                Save
-              </button>
-              <button
-                type="button"
-                class="btn btn-sm btn-danger"
-                id="removeTimer"
-              >
-                Remove Timer
-              </button>
+          </div>
+          <div class="container globalConfiguration" id="globalConfiguration">
+            <div class="col-md-12 gc-col" id="gc-col">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Configuration Item</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="config-listing" id="config-listing">
+                  <tr>
+                    <td scope="row">Enter custom timer amount:</td>
+                    <td scope="row">
+                      <input
+                        type="text"
+                        id="customTimer"
+                        class="form-control"
+                      />
+                    </td>
+                    <td scope="row">
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-success"
+                        id="timerSave"
+                        disabled
+                      >
+                        Save
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-danger"
+                        id="removeTimer"
+                      >
+                        Remove Timer
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
