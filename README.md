@@ -1,7 +1,7 @@
 # Coding Quiz - Homework Assigment 4
 
 This application is a coding quiz which offers timed multiple choice questions.
-This application generates a random password based on user-selected criteria. This app runs in a browser and feature dynamically updated HTML and CSS powered by JavaScript code. It also features a clean and polished user interface and is responsive, ensuring that it adapts to multiple screen sizes.
+This app runs in a browser and feature dynamically updated HTML and CSS powered by JavaScript code. It also features a clean and polished user interface and is responsive, ensuring that it adapts to multiple screen sizes.
 
 ## Objective
 AS A coding bootcamp student
@@ -56,7 +56,7 @@ Please visit the [site](https://www.harishnarain.com/codingquiz/) hosted on GitH
 ![Screenshot 7](https://github.com/harishnarain/codingquiz/blob/master/Screenshot7.png)
 
 ## License
-Due to the nature of this exercise, no license has been included.
+This project uses the MIT license.
 
 ## Tools used
 * [GitHub](https://github.com/) - Code repository and page hosting via GitHub Pages
